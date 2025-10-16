@@ -1,0 +1,32 @@
+/* ------------------------
+   1stthentrades Website JS
+------------------------- */
+
+// Mobile menu toggle
+const menuBtn = document.getElementById('menuBtn');
+const nav = document.getElementById('nav');
+
+menuBtn.addEventListener('click', () => {
+  nav.classList.toggle('show');
+});
+
+// Simple contact form handler (mailto fallback)
+function handleForm(event) {
+  event.preventDefault();
+
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const message = document.getElementById('message').value.trim();
+
+  if (!name || !email || !message) {
+    alert('Please fill in all fields!');
+    return false;
+  }
+
+  const mailtoLink = `mailto:1stthenwilson@gmail.com?subject=Contact from ${name}&body=${encodeURIComponent(
+    `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+  )}`;
+
+  window.location.href = mailtoLink;
+  return false;
+}
